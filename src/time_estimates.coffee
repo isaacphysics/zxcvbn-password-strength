@@ -17,16 +17,16 @@ time_estimates =
 
   guesses_to_score: (guesses) ->
     DELTA = 5
-    if guesses < 1e3 + DELTA
+    if guesses < 1e5 + DELTA
       # risky password: "too guessable"
       0
-    else if guesses < 1e6 + DELTA
+    else if guesses < 1e7 + DELTA
       # modest protection from throttled online attacks: "very guessable"
       1
-    else if guesses < 1e8 + DELTA
+    else if guesses < 1e9 + DELTA
       # modest protection from unthrottled online attacks: "somewhat guessable"
       2
-    else if guesses < 1e10 + DELTA
+    else if guesses < 1e12 + DELTA
       # modest protection from offline attacks: "safely unguessable"
       # assuming a salted, slow hash function like bcrypt, scrypt, PBKDF2, argon, etc
       3
