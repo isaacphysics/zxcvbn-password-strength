@@ -35,9 +35,9 @@ L33T_TABLE =
   z: ['2']
 
 REGEXEN =
-  recent_year:  /19\d\d|200\d|201\d/g
+  recent_year:  /19\d\d|200\d|201\d|202\d/g
 
-DATE_MAX_YEAR = 2050
+DATE_MAX_YEAR = 2100
 DATE_MIN_YEAR = 1000
 DATE_SPLITS =
   4:[      # for length-4 strings, eg 1191 or 9111, two ways to split:
