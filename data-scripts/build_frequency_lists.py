@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import codecs
+import base64
 
 from operator import itemgetter
 
@@ -117,7 +118,12 @@ def filter_frequency_lists(freq_lists):
     return result
 
 def to_kv(lst, lst_name):
-    val = '"%s".split(",")' % ','.join(lst)
+    # Make the word lists into single comma-separated strings and then base64 encode them;
+    # we trade space for some obfuscation of the more inappropriate words in the corpus:
+    joined_lst = ','.join(lst)
+    encoded_lst = base64.b64encode(joined_lst.encode('utf-8'))
+    # Then decode and split them automatically when loaded in JavaScript using 'atob' and 'split':
+    val = 'atob("%s").split(",")' % encoded_lst
     return '%s: %s' % (lst_name, val)
 
 def main():
